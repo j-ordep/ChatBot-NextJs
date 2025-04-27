@@ -1,8 +1,6 @@
 # Chat AI - Aplicação de Chat com Inteligência Artificial
 
-Este projeto é uma aplicação de chat que utiliza inteligência artificial para interagir com os usuários, criada com tecnologias modernas de frontend e backend.
-
-![Chat AI Screenshot](https://via.placeholder.com/800x400?text=Chat+AI+Screenshot)
+Este projeto é uma aplicação de chat que utiliza inteligência artificial para interagir com os usuários.
 
 ## Tecnologias Utilizadas
 
