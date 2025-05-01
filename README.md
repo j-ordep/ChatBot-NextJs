@@ -1,6 +1,6 @@
-# Chat AI - Aplicação de Chat com Inteligência Artificial
+# FURIA Chat - Aplicação de Chat com Inteligência Artificial
 
-Este projeto é uma aplicação de chat que utiliza inteligência artificial para interagir com os usuários.
+Este projeto é uma aplicação de chat personalizada para a FURIA que utiliza inteligência artificial através do n8n para interagir com os usuários.
 
 ## Tecnologias Utilizadas
 
@@ -9,17 +9,18 @@ Este projeto é uma aplicação de chat que utiliza inteligência artificial par
 - **[TypeScript](https://www.typescriptlang.org/)** - Superset JavaScript tipado
 - **[Shadcn UI](https://ui.shadcn.com/)** - Componentes de UI reutilizáveis e acessíveis
 - **[Tailwind CSS](https://tailwindcss.com/)** - Framework CSS utility-first
-- **[Vercel AI SDK](https://sdk.vercel.ai/docs)** - SDK para integração com modelos de IA
-- **[OpenAI API](https://openai.com/api/)** - API de modelos de linguagem avançados
+- **[n8n](https://n8n.io/)** - Plataforma de automação de fluxo de trabalho para integração com IA
 - **[next-themes](https://github.com/pacocoursey/next-themes)** - Solução de tema escuro/claro para Next.js
+- **[uuid](https://www.npmjs.com/package/uuid)** - Geração de IDs únicos para sessões de chat
 
 ## Funcionalidades
 
-- Interface de chat amigável e responsiva
-- Integração com modelos de linguagem da OpenAI
+- Interface de chat amigável e responsiva personalizada para FURIA
+- Integração com n8n para processamento de mensagens via IA
 - Tema claro/escuro com alternância automática
-- Streaming de respostas em tempo real
+- Histórico de chat persistente por usuário (via Redis no n8n)
 - Design moderno e acessível
+- Indicador de digitação durante o carregamento de respostas
 
 ## Começando
 
@@ -36,7 +37,7 @@ pnpm install
 Depois, configure as variáveis de ambiente criando um arquivo `.env.local` na raiz do projeto:
 
 ```
-OPENAI_API_KEY=sua-chave-aqui
+NEXT_PUBLIC_N8N_WEBHOOK_URL=sua-url-do-webhook-n8n
 ```
 
 Em seguida, execute o servidor de desenvolvimento:
@@ -59,7 +60,7 @@ Abra [http://localhost:3000](http://localhost:3000) no seu navegador para ver o 
 src/
   app/               # Estrutura de rotas do Next.js
     api/             # Rotas de API
-      chat/          # Endpoint da API de chat
+      chat/          # Endpoint da API de chat para comunicação com n8n
     globals.css      # Estilos globais e temas
     layout.tsx       # Layout principal
     page.tsx         # Página inicial
@@ -69,6 +70,15 @@ src/
   lib/               # Utilitários e helpers
 ```
 
+## Configuração do n8n
+
+O projeto utiliza um workflow no n8n com os seguintes componentes:
+- Webhook para receber mensagens do frontend
+- AI Agent para processamento de mensagens
+- Redis Chat Memory para histórico de conversas por sessionId (opcional)
+
+É necessário ativar o fluxo de trabalho no n8n e configurar corretamente a URL do webhook no arquivo de ambiente.
+
 ## Aprendendo Mais
 
 Para saber mais sobre as tecnologias utilizadas:
@@ -77,7 +87,7 @@ Para saber mais sobre as tecnologias utilizadas:
 - [Documentação do React](https://reactjs.org/docs)
 - [Documentação do Tailwind CSS](https://tailwindcss.com/docs)
 - [Documentação do Shadcn UI](https://ui.shadcn.com/docs)
-- [Documentação do Vercel AI SDK](https://sdk.vercel.ai/docs)
+- [Documentação do n8n](https://docs.n8n.io/)
 
 ## Implantação
 
