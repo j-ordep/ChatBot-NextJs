@@ -1,24 +1,37 @@
-import { openai } from '@ai-sdk/openai';
-import { streamText } from 'ai';
-
 // Allow streaming responses up to 30 seconds
 export const maxDuration = 30;
 
 export async function POST(req: Request) {
-  const { messages } = await req.json();
+  const { messages, sessionId } = await req.json();
 
-  // Certifique-se de que process.env.OPENAI_API_KEY está disponível
-  if (!process.env.OPENAI_API_KEY) {
-    return new Response('API key not found', { status: 500 });
+  if (process.env.N8N_WEBHOOK_URL) {
+    try {
+      const n8nResponse = await fetch(process.env.N8N_WEBHOOK_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ messages, sessionId }), // repassa sessionId
+      });
+      const n8nData = await n8nResponse.json();
+      console.log('Resposta recebida do n8n:', n8nData); // log
+      const firstMessage = Array.isArray(n8nData) ? n8nData[0] : n8nData;
+      return new Response(
+        JSON.stringify({
+          role: firstMessage.role,
+          content: firstMessage.content
+        }),
+        {
+          status: 200,
+          headers: { 'Content-Type': 'application/json' },
+        }
+      );
+    } catch (error) {
+      console.error('Erro ao enviar para o webhook n8n:', error);
+      return new Response('Erro ao processar a resposta do n8n', { status: 500 });
+    }
   }
 
-  const result = streamText({
-    model: openai('GPT-3.5-turbo'),
-    system: `You are a helpful assistant. Check your knowledge base before answering any questions.
-    Only respond to questions using information from tool calls.
-    if no relevant information is found in the tool calls, respond, "Sorry, I don't know."`,
-    messages,
+  return new Response(JSON.stringify({ status: 'ok' }), {
+    status: 200,
+    headers: { 'Content-Type': 'application/json' },
   });
-
-  return result.toDataStreamResponse();
 }

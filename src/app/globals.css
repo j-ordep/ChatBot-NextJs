@@ -41,31 +41,27 @@
   --color-sidebar-ring: var(--sidebar-ring);
 }
 
+/* Tema TR (Claro) - Inspirado nas cores dos Terroristas de CS */
 :root {
   --radius: 0.625rem;
-  --background: oklch(0.95 0.005 260);
-  --foreground: oklch(0.129 0.042 264.695);
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.129 0.042 264.695);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.129 0.042 264.695);
+  --background: #f5f6fa;
+  --foreground: #222;
+  --card: #fff;
+  --card-foreground: #222;
+  --primary: #FFB300;
+  --primary-foreground: #222;
+  --secondary: #FFF3C4;
+  --secondary-foreground: #222;
+  --muted: #ececec;
+  --muted-foreground: #888;
+  --accent: #FFD580;
+  --accent-foreground: #222;
+  --destructive: #ff5252;
+  --border: #FFB300;
+  --input: #fff;
+  --ring: #FFB300;
 
-  /* Modificando o botão para preto no tema claro */
-  --primary: oklch(0.1 0 0);
-  /* Preto */
-  --primary-foreground: oklch(1 0 0);
-  /* Texto branco */
-
-  --secondary: oklch(0.968 0.007 247.896);
-  --secondary-foreground: oklch(0.208 0.042 265.755);
-  --muted: oklch(0.968 0.007 247.896);
-  --muted-foreground: oklch(0.554 0.046 257.417);
-  --accent: oklch(0.968 0.007 247.896);
-  --accent-foreground: oklch(0.208 0.042 265.755);
-  --destructive: oklch(0.577 0.245 27.325);
-  --border: oklch(0.929 0.013 255.508);
-  --input: oklch(0.929 0.013 255.508);
-  --ring: oklch(0.704 0.04 256.788);
+  /* Outras cores do tema */
   --chart-1: oklch(0.646 0.222 41.116);
   --chart-2: oklch(0.6 0.118 184.704);
   --chart-3: oklch(0.398 0.07 227.392);
@@ -79,32 +75,42 @@
   --sidebar-accent-foreground: oklch(0.208 0.042 265.755);
   --sidebar-border: oklch(0.929 0.013 255.508);
   --sidebar-ring: oklch(0.704 0.04 256.788);
+  --team-yellow: #FFD600;
 }
 
+/* Tema CT (Escuro) */
 .dark {
-  --background: oklch(0.1 0 0);
-  --foreground: oklch(0.95 0 0);
-  --card: oklch(0.2 0 0);
-  --card-foreground: oklch(0.95 0 0);
-  --popover: oklch(0.2 0 0);
-  --popover-foreground: oklch(0.95 0 0);
+  --background: oklch(0.1 0.01 250);
+  /* Fundo escuro azulado */
+  --foreground: oklch(0.95 0.01 250);
+  /* Texto claro */
+  --card: oklch(0.15 0.02 250);
+  /* Cards azul escuro */
+  --card-foreground: oklch(0.95 0.01 250);
+  --popover: oklch(0.15 0.02 250);
+  --popover-foreground: oklch(0.95 0.01 250);
 
-  /* Modificando o botão para branco no tema escuro */
-  --primary: oklch(1 0 0);
-  /* Branco */
-  --primary-foreground: oklch(0.1 0 0);
-  /* Texto preto */
+  /* Botão principal - Azul CT */
+  --primary: oklch(0.5 0.15 250);
+  /* Azul CT */
+  --primary-foreground: oklch(1 0 0);
+  /* Texto branco */
 
-  --secondary: oklch(0.279 0.041 260.031);
-  --secondary-foreground: oklch(0.984 0.003 247.858);
-  --muted: oklch(0.279 0.041 260.031);
-  --muted-foreground: oklch(0.704 0.04 256.788);
-  --accent: oklch(0.279 0.041 260.031);
-  --accent-foreground: oklch(0.984 0.003 247.858);
+  --secondary: oklch(0.25 0.05 250);
+  /* Azul mais escuro */
+  --secondary-foreground: oklch(0.95 0.01 250);
+  --muted: oklch(0.25 0.05 250);
+  --muted-foreground: oklch(0.7 0.05 250);
+  --accent: oklch(0.35 0.1 250);
+  /* Accent azul */
+  --accent-foreground: oklch(0.95 0.01 250);
   --destructive: oklch(0.704 0.191 22.216);
-  --border: oklch(1 0 0 / 10%);
+  --border: oklch(0.3 0.05 250);
   --input: oklch(1 0 0 / 15%);
-  --ring: oklch(0.551 0.027 264.364);
+  --ring: oklch(0.55 0.15 250);
+  /* Ring azul */
+
+  /* Outras cores do tema */
   --chart-1: oklch(0.488 0.243 264.376);
   --chart-2: oklch(0.696 0.17 162.48);
   --chart-3: oklch(0.769 0.188 70.08);
@@ -134,10 +140,17 @@
   color: rgba(255, 255, 255, 0.7) !important;
 }
 
+/* Ajustes para os botões nos temas */
 .dark .button,
-.dark button {
-  background-color: white !important;
-  color: black !important;
+.dark button[data-variant="default"] {
+  background-color: var(--primary) !important;
+  color: var(--primary-foreground) !important;
+}
+
+.button,
+button[data-variant="default"] {
+  background-color: var(--primary) !important;
+  color: var(--primary-foreground) !important;
 }
 
 .chat-message-text {
@@ -145,4 +158,93 @@
   word-break: break-word !important;
   overflow-wrap: break-word !important;
   max-width: 100% !important;
+}
+
+/* Estilo Gamer TEAM */
+.team-card {
+  border: 2px solid var(--team-yellow) !important;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.3) !important;
+  transition: box-shadow 0.3s ease-in-out;
+}
+
+.team-card:hover {
+  box-shadow: 0 0 20px var(--primary) !important;
+}
+
+.team-message-user {
+  background-color: transparent;
+  border-radius: var(--radius);
+  padding: 0;
+  margin-bottom: 0.5rem;
+  transition: none;
+}
+
+.team-message-user:hover {
+  transform: none;
+}
+
+.team-message-bot {
+  background-color: transparent;
+  color: var(--primary);
+  border-radius: 0;
+  padding: 0;
+  margin-bottom: 0.5rem;
+  transition: none;
+}
+
+.dark .team-message-bot {
+  color: var(--primary);
+  background-color: transparent;
+}
+
+.team-header {
+  background: linear-gradient(90deg, var(--primary) 0%, var(--accent) 100%);
+  border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+}
+
+:root .team-title {
+  color: var(--team-yellow) !important;
+}
+
+.dark .team-card {
+  border: 2px solid var(--primary) !important;
+}
+
+.dark .team-title {
+  color: #fff !important;
+}
+
+/* Animação de digitação para o bot */
+.typing-indicator {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.typing-indicator span {
+  width: 6px;
+  height: 6px;
+  background-color: var(--primary-foreground);
+  border-radius: 50%;
+  animation: typingPulse 1.5s infinite;
+}
+
+.typing-indicator span:nth-child(2) {
+  animation-delay: 0.5s;
+}
+
+.typing-indicator span:nth-child(3) {
+  animation-delay: 1s;
+}
+
+@keyframes typingPulse {
+
+  0%,
+  100% {
+    opacity: 0.4;
+  }
+
+  50% {
+    opacity: 1;
+  }
 }
