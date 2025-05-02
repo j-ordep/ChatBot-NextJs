@@ -13,6 +13,7 @@ Este projeto é uma aplicação de chat personalizada para a FURIA que utiliza i
 
 ### Backend
 - **[n8n](https://n8n.io/)**
+  - AI Agent(GPT 4o mini)
 
 
 ## Funcionalidades
