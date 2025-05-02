@@ -1,5 +1,6 @@
 import { ModeToggle } from "@/components/ui/ModeToggle";
 import { ThemeProvider } from "@/components/ui/theme-provider";
+import { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 
@@ -16,6 +17,9 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "Furia Chat",
   description: "Chat com Furia AI",
+  icons: {
+    icon: "/furia-logo.png", 
+  },
 };
 
 export default function RootLayout({

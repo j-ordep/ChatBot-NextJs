@@ -158,13 +158,23 @@ button[data-variant="default"] {
   max-width: 100% !important;
 }
 
-.team-card {
+.furia-card {
   border: 2px solid var(--team-yellow) !important;
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.3) !important;
   transition: box-shadow 0.3s ease-in-out;
 }
 
-.team-card:hover {
+.furia-card:hover {
+  box-shadow: 0 0 20px var(--primary) !important;
+}
+
+.dark .furia-card {
+  border: 2px solid var(--primary) !important;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.3) !important;
+  transition: box-shadow 0.3s ease-in-out;
+}
+
+.dark .furia-card:hover {
   box-shadow: 0 0 20px var(--primary) !important;
 }
 
@@ -201,10 +211,6 @@ button[data-variant="default"] {
 
 :root .team-title {
   color: var(--team-yellow) !important;
-}
-
-.dark .team-card {
-  border: 2px solid var(--primary) !important;
 }
 
 .dark .team-title {

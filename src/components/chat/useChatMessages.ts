@@ -56,6 +56,7 @@ export function useChatMessages({
           },
         ]);
       }
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     } catch (err) {
       setMessages((prev) => [
         ...prev,
