@@ -1,5 +1,4 @@
-// Allow streaming responses up to 30 seconds
-export const maxDuration = 30;
+export const maxDuration = 45;
 
 export async function POST(req: Request) {
   const { messages, sessionId } = await req.json();
@@ -9,11 +8,14 @@ export async function POST(req: Request) {
       const n8nResponse = await fetch(process.env.N8N_WEBHOOK_URL, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ messages, sessionId }), // repassa sessionId
+        body: JSON.stringify({ messages, sessionId }),
       });
+
       const n8nData = await n8nResponse.json();
-      console.log('Resposta recebida do n8n:', n8nData); // log
+      console.log('Resposta recebida do n8n:', n8nData);
+      
       const firstMessage = Array.isArray(n8nData) ? n8nData[0] : n8nData;
+
       return new Response(
         JSON.stringify({
           role: firstMessage.role,

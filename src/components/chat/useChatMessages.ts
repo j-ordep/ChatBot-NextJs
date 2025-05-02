@@ -8,11 +8,11 @@ export function useChatMessages({
   apiEndpoint = '/api/routes',
   initialMessages = []
 }: ChatMessagesOptions = {}): ChatMessagesReturn {
+  
   const [messages, setMessages] = useState<Message[]>(initialMessages);
   const [input, setInput] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   
-  // Gera um sessionId único por usuário/sessão
   const [sessionId] = useState(() => uuidv4());
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {

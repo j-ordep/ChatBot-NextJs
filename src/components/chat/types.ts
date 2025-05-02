@@ -10,13 +10,12 @@ export type ChatResponse = {
   content: string;
 };
 
-// Props do hook useChatMessages
+// Props useChatMessages
 export interface ChatMessagesOptions {
-  apiEndpoint?: string; // Endpoint da API, padrão é "/api/chat"
-  initialMessages?: Message[]; // Mensagens iniciais
+  apiEndpoint?: string; 
+  initialMessages?: Message[];
 }
 
-// Retorno do hook useChatMessages
 export interface ChatMessagesReturn {
   messages: Message[];
   input: string;
@@ -26,14 +25,12 @@ export interface ChatMessagesReturn {
   setInput: React.Dispatch<React.SetStateAction<string>>;
 }
 
-// Props do componente ChatMessage
 export interface ChatMessageProps {
   message: Message;
   userAvatarUrl?: string;
   botAvatarUrl?: string;
 }
 
-// Props do componente ChatTypingIndicator
 export interface ChatTypingIndicatorProps {
   botName?: string;
 }

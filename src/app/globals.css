@@ -110,7 +110,6 @@
   --ring: oklch(0.55 0.15 250);
   /* Ring azul */
 
-  /* Outras cores do tema */
   --chart-1: oklch(0.488 0.243 264.376);
   --chart-2: oklch(0.696 0.17 162.48);
   --chart-3: oklch(0.769 0.188 70.08);
@@ -140,7 +139,6 @@
   color: rgba(255, 255, 255, 0.7) !important;
 }
 
-/* Ajustes para os botões nos temas */
 .dark .button,
 .dark button[data-variant="default"] {
   background-color: var(--primary) !important;
@@ -160,7 +158,6 @@ button[data-variant="default"] {
   max-width: 100% !important;
 }
 
-/* Estilo Gamer TEAM */
 .team-card {
   border: 2px solid var(--team-yellow) !important;
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.3) !important;
